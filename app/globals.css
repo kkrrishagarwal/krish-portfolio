@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-zinc-950 text-zinc-300 antialiased;
+}
+
+::selection {
+  background: rgba(57, 255, 20, 0.3);
+  color: #fff;
+}
+
+/* Custom cursor: hide the native one only when our cursor is active */
+html.custom-cursor,
+html.custom-cursor * {
+  cursor: none !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#39ff14, #00ffff);
+  border-radius: 4px;
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .text-glow-green {
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.7), 0 0 30px rgba(57, 255, 20, 0.3);
+  }
+  .text-glow-blue {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.3);
+  }
+  .scanlines {
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 2px,
+      rgba(255, 255, 255, 0.015) 3px
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
